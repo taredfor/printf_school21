@@ -99,8 +99,8 @@ int	ft_direction(const char *format, t_flag *s_pec, va_list ap)
  	else if (format[s_pec->i] == 'd' || format[s_pec->i] == 'i')
 		ft_printing_decimal(s_pec, va_arg(ap, int));
 	else if (format[s_pec->i] == 'X' || format[s_pec->i] == 'x' || format[s_pec->i] == 'u')
-		ft_printing_unsigned_decimal(s_pec, va_arg(ap, unsigned int));
+			ft_printing_unsigned_decimal(s_pec, va_arg(ap, unsigned int));
 	else if (format[s_pec->i] == 'p')
-		ft_printing_pointer(s_pec, va_arg(ap, unsigned long);
+		ft_printing_pointer(s_pec, va_arg(ap, unsigned long));
  	return (0);
 }

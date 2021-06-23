@@ -14,7 +14,7 @@ typedef struct s_pec
 	int	width;
 	int	precision;
 	int	star;
-	int	type;
+	char	type;
 	int dot;
 	int base;
 	int plus;
@@ -28,6 +28,9 @@ char	ft_char_of_itoa(t_flag *s_pec, int x);
 void 	ft_putchar_len(char c, t_flag *spec);
 void  	ft_printing_decimal(t_flag *s_pec, long long x);
 void 	ft_printing_unsigned_decimal(t_flag *s_pec, unsigned int x);
-void ft_zero_print(t_flag *s_pec, int wid, int c);
+void 	ft_zero_print(t_flag *s_pec, int wid, int c);
+void	ft_printing_pointer(t_flag *s_pec, unsigned long x);
+void 	ft_putstr_0x(t_flag *s_pec);
+void	ft_putstr_spec(char *str, t_flag *s_pec);
 
 #endif

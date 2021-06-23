@@ -12,11 +12,10 @@ void	ft_init_flag(t_flag *s_pec)
 	s_pec->precision = -1;
 	s_pec->star = 0;
 	s_pec->base = 10;
-	//s_pec->plus = 0;
 }
 
 void	ft_flag_parsing(const char *format, t_flag *s_pec)
-{	
+{
 	while (1)
 	{
 		if (format[s_pec->i] == '-')
@@ -67,57 +66,74 @@ void	ft_precision_pars(const char *format, t_flag *s_pec, va_list ap)
 		s_pec->i++;
 }
 
+void ft_type(const char *format, t_flag *s_pec)
+{
+	if (format[s_pec->i])
+	{
+		s_pec->type = format[s_pec->i];
+	}
+}
+
 void	ft_parsing(const char *format, t_flag *s_pec, va_list ap)
 {
 	ft_init_flag(s_pec);
 	ft_flag_parsing(format, s_pec);
 	ft_width_parsing(format, s_pec, ap);
 	ft_precision_pars(format, s_pec, ap);
+	ft_type(format, s_pec);
 }
 
 int	ft_printf(const char *format, ...)
 {
-	va_list	ap;
-	t_flag	s_pec;
+	va_list ap;
+	t_flag 	s_pec;
+	int 	i;
 
+	i = 0;
 	s_pec.i = 0;
 	s_pec.len = 0;
 	va_start(ap, format);
-	while (*(format + s_pec.i))
+	while (*(format + s_pec.i) != '\0')
 	{
-		if (*(format + s_pec.i) == '%' /*&& *(format + s_pec.i + 1) != (int)ft_strlen(format)*/)
+		if (*(format + s_pec.i) == '%' && *(format + s_pec.i + 1) != '\0')
 		{
-			ft_parsing(format + 1, &s_pec, ap);
+			ft_parsing(format + 1 , &s_pec, ap);
 			ft_direction(++format, &s_pec, ap);
 		}
 		else
+			{
 			write(1, &format[s_pec.i], 1);
-		s_pec.i++;
+			s_pec.len++;
+		}
+		if ((int)(ft_strlen(format)) > s_pec.i)
+			s_pec.i++;
 	}
 	va_end (ap);
 //	printf("i= %d\n", s_pec.i);
 //	printf("dot= %d\n", s_pec.dot);
 //	printf("width= %d\n", s_pec.width);
 //	printf("precision= %d\n", s_pec.precision);
-	return(s_pec.len);
+	return (s_pec.len);
 }
 
-
-int	main()
-{
-	static int					mx_i = 42;
-	char *c = "Hello World";
-	// //char *d = "qwertyjyhjh";
-	// ft_printf("%-",c);
-	// return (0);
-	//ft_printf("|y%10.5c|\n");
-	//printf("|y%10.5c|\n");
-//	ft_printf(" !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~", c);
-//	printf(" !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~", c);
-	//ft_printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",' ','!','"','#','$','%','&','\'','(',')','*','+',',','-','.','/','0','1','2','3','4','5','6','7','8','9',':',';','<','=','>','?','@','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','[','\\',']','^','_','`','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','{','|','}','~',' ');
-	//printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",' ','!','"','#','$','%','&','\'','(',')','*','+',',','-','.','/','0','1','2','3','4','5','6','7','8','9',':',';','<','=','>','?','@','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','[','\\',']','^','_','`','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','{','|','}','~',' ');
-	//ft_printf("%p", &mx_i);
-	printf("%p", &mx_i);
-	return (0);
-
-}
+//int	main()
+//{
+//	int i;
+//	int n;
+//	static int					mx_i = 42;
+//	char *c = "Hello World";
+////	printf("%d\n", i);
+////	i = printf("%5");
+////	printf("%d\n", i);
+////	//printf("\n");
+////	n = ft_printf("%5");
+////	printf("%d\n", n);
+//
+////	printf("%u\n", 4294967295u);
+////	ft_printf("%u", 4294967295u);
+//
+//	//"this %x number", 17
+//	printf("this %x number\n", 17);
+//	ft_printf("this %x number\n", 17);
+//	return (0);
+//}

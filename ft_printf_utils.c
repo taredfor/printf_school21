@@ -53,6 +53,13 @@ int	ft_atoi(const char *str)
 	return ((long)(temp * sign));
 }
 
+int ft_return_nbr(int nbr)
+{
+	if (nbr < 0)
+		return (-nbr);
+	return (nbr);
+}
+
 char	ft_char_of_itoa(t_flag *s_pec, int x)
 {
 		char c;
@@ -92,7 +99,7 @@ char	*ft_itoa(unsigned long x, t_flag *s_pec)
 	str[len] = '\0';
 	while (--len >= sign)
 	{
-		count_digit = (int)x % s_pec->base;
+		count_digit = x % s_pec->base;
 		str[len] = ft_char_of_itoa(s_pec, count_digit);
 		x = x / s_pec->base;
 	}

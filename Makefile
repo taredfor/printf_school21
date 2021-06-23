@@ -1,7 +1,7 @@
 NAME = libftprintf.a
 
 LIST =		ft_printf.c		ft_direction.c		ft_printf_utils.c\
-			ft_decimal.c
+			ft_decimal.c	ft_pointer.c
 
 OBJ = $(patsubst %.c, %.o,$(LIST))
 
