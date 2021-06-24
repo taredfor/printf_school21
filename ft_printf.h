@@ -32,5 +32,6 @@ void 	ft_zero_print(t_flag *s_pec, int wid, int c);
 void	ft_printing_pointer(t_flag *s_pec, unsigned long x);
 void 	ft_putstr_0x(t_flag *s_pec);
 void	ft_putstr_spec(char *str, t_flag *s_pec);
+void	ft_specialcasefor_point(t_flag *s_pec);
 
 #endif

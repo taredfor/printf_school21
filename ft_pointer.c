@@ -7,30 +7,28 @@ void ft_putstr_0x(t_flag *s_pec)
 	ft_putchar_len('x', s_pec);
 }
 
-//void ft_putstr(t_flag *s_pec, char *str)
-//{
-//	int i;
-//	int len;
-//
-//	i = 0;
-//	if (!str)
-//		return ;
-//	if (s_pec->precision == -1 || s_pec->precision >= ft_strlen(str))
-//		len = ft_strlen(str);
-//	else
-//	{
-//		if (s_pec->precision < 1)
-//			s_pec->precision = 0;
-//		len = s_pec->precision;
-//	}
-//	while (i < len)
-//	{
-//		write(1, &str[i],1);
-//		s_pec->len++;
-//		i++;
-//	}
-//}
+void ft_specialcasefor_point(t_flag *s_pec)
+{
+	if (s_pec->precision == 0)
+	{
+		if (!s_pec->minus)
+			ft_zero_print(s_pec, s_pec->width - 1, 0);
+		s_pec->precision = -1;
+		ft_putstr_spec("0x", s_pec);
+		if (s_pec->minus)
+			ft_zero_print(s_pec, s_pec->width - 1, 0);
 
+	}
+	else
+	{
+		if (!s_pec->minus)
+			ft_zero_print(s_pec, s_pec->width - 2, 0);
+		s_pec->precision = -1;
+		ft_putstr_spec("0x0", s_pec);
+		if (s_pec->minus)
+			ft_zero_print(s_pec, s_pec->width - 2, 0);
+	}
+}
 void	ft_printing_pointer(t_flag *s_pec, unsigned long x)
 {
 	char 	*str;
@@ -39,25 +37,26 @@ void	ft_printing_pointer(t_flag *s_pec, unsigned long x)
 	len = 0;
 	if (x == 0 && s_pec->precision <= 0)
 	{
-		if (s_pec->precision == 0)
-		{
-			if (!s_pec->minus)
-				ft_zero_print(s_pec, s_pec->width - 1, 0);
-			s_pec->precision = -1;
-			ft_putstr_spec("0x", s_pec);
-			if (s_pec->minus)
-				ft_zero_print(s_pec, s_pec->width - 1, 0);
-
-		}
-		else
-		{
-			if (!s_pec->minus)
-				ft_zero_print(s_pec, s_pec->width - 2, 0);
-			s_pec->precision = -1;
-			ft_putstr_spec("0x0", s_pec);
-			if (s_pec->minus)
-				ft_zero_print(s_pec, s_pec->width - 2, 0);
-		}
+//		if (s_pec->precision == 0)
+//		{
+//			if (!s_pec->minus)
+//				ft_zero_print(s_pec, s_pec->width - 1, 0);
+//			s_pec->precision = -1;
+//			ft_putstr_spec("0x", s_pec);
+//			if (s_pec->minus)
+//				ft_zero_print(s_pec, s_pec->width - 1, 0);
+//
+//		}
+//		else
+//		{
+//			if (!s_pec->minus)
+//				ft_zero_print(s_pec, s_pec->width - 2, 0);
+//			s_pec->precision = -1;
+//			ft_putstr_spec("0x0", s_pec);
+//			if (s_pec->minus)
+//				ft_zero_print(s_pec, s_pec->width - 2, 0);
+//		}
+		ft_specialcasefor_point(s_pec);
 		return ;
 	}
 	if (s_pec->precision > -1)
