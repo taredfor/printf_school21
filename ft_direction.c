@@ -1,4 +1,5 @@
 #include "ft_printf.h"
+
 void ft_zero_print(t_flag *s_pec, int wid, int c)
 {
 	if (c)
@@ -15,10 +16,7 @@ void ft_zero_print(t_flag *s_pec, int wid, int c)
 	while (wid-- && wid > 0)
 	{
 		if (!s_pec->minus && s_pec->zero)
-		{
-			write(1, "0", 1);
-			s_pec->len++;
-		}
+			ft_putchar_len('0', s_pec);
 		else
 		{
 			write(1, " ", 1);
@@ -26,6 +24,7 @@ void ft_zero_print(t_flag *s_pec, int wid, int c)
 		}
 	}
 }
+
 void ft_string_print (char *format, t_flag *s_pec)
 {
 	int len;

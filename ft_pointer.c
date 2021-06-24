@@ -1,5 +1,4 @@
 #include "ft_printf.h"
-#include "stdio.h"
 
 void ft_putstr_0x(t_flag *s_pec)
 {
@@ -37,25 +36,6 @@ void	ft_printing_pointer(t_flag *s_pec, unsigned long x)
 	len = 0;
 	if (x == 0 && s_pec->precision <= 0)
 	{
-//		if (s_pec->precision == 0)
-//		{
-//			if (!s_pec->minus)
-//				ft_zero_print(s_pec, s_pec->width - 1, 0);
-//			s_pec->precision = -1;
-//			ft_putstr_spec("0x", s_pec);
-//			if (s_pec->minus)
-//				ft_zero_print(s_pec, s_pec->width - 1, 0);
-//
-//		}
-//		else
-//		{
-//			if (!s_pec->minus)
-//				ft_zero_print(s_pec, s_pec->width - 2, 0);
-//			s_pec->precision = -1;
-//			ft_putstr_spec("0x0", s_pec);
-//			if (s_pec->minus)
-//				ft_zero_print(s_pec, s_pec->width - 2, 0);
-//		}
 		ft_specialcasefor_point(s_pec);
 		return ;
 	}
