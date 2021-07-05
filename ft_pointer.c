@@ -1,12 +1,12 @@
 #include "ft_printf.h"
 
-void ft_putstr_0x(t_flag *s_pec)
+void	ft_putstr_0x(t_flag *s_pec)
 {
 	ft_putchar_len('0', s_pec);
 	ft_putchar_len('x', s_pec);
 }
 
-void ft_specialcasefor_point(t_flag *s_pec)
+void	ft_specialcasefor_point(t_flag *s_pec)
 {
 	if (s_pec->precision == 0)
 	{
@@ -16,7 +16,6 @@ void ft_specialcasefor_point(t_flag *s_pec)
 		ft_putstr_spec("0x", s_pec);
 		if (s_pec->minus)
 			ft_zero_print(s_pec, s_pec->width - 1, 0);
-
 	}
 	else
 	{
@@ -28,10 +27,11 @@ void ft_specialcasefor_point(t_flag *s_pec)
 			ft_zero_print(s_pec, s_pec->width - 2, 0);
 	}
 }
+
 void	ft_printing_pointer(t_flag *s_pec, unsigned long x)
 {
-	char 	*str;
-	int 	len;
+	char	*str;
+	int		len;
 
 	len = 0;
 	if (x == 0 && s_pec->precision <= 0)
@@ -53,4 +53,4 @@ void	ft_printing_pointer(t_flag *s_pec, unsigned long x)
 	if (s_pec->minus)
 		ft_zero_print(s_pec, s_pec->width - s_pec->precision - 1, 0);
 	free (str);
-	}
+}

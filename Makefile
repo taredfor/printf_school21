@@ -1,11 +1,13 @@
 NAME = libftprintf.a
 
 LIST =		ft_printf.c		ft_direction.c		ft_printf_utils.c\
-			ft_decimal.c	ft_pointer.c
+			ft_decimal.c	ft_pointer.c		ft_parsing.c
 
 OBJ = $(patsubst %.c, %.o,$(LIST))
 
 HEADER = ft_printf.h
+
+OPTFLAGS = -O2
 
 FLAGS = -Wall -Wextra -Werror
 

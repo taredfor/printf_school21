@@ -10,9 +10,9 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-int ft_len_digit(unsigned long x, int base, int sign)
+int	ft_len_digit(unsigned long x, int base, int sign)
 {
-	int len;
+	int	len;
 
 	len = 1;
 	x = x / base;
@@ -26,29 +26,29 @@ int ft_len_digit(unsigned long x, int base, int sign)
 
 char	ft_char_of_itoa(t_flag *s_pec, int x)
 {
-		char c;
+	char	c;
 
-		if (x > 9)
-		{
-			if (s_pec->type == 'X')
-				c = x + 7 + '0';
-			else
-				c = x + 39 + '0';
-		}
+	if (x > 9)
+	{
+		if (s_pec->type == 'X')
+			c = x + 7 + '0';
 		else
-		{
-			if (x < 0)
-				x = -x;
-			c = x + '0';
-		}
-		return (c);
+			c = x + 39 + '0';
+	}
+	else
+	{
+		if (x < 0)
+			x = -x;
+		c = x + '0';
+	}
+	return (c);
 }
 
 char	*ft_itoa(unsigned long x, t_flag *s_pec)
 {
-	char 	*str;
+	char	*str;
 	int		sign;
-	int 	len;
+	int		len;
 	int		count_digit;
 
 	sign = 0;

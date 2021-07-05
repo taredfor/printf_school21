@@ -1,5 +1,3 @@
-
-
 int	main()
 {
 	int i;
@@ -15,11 +13,12 @@ int	main()
 
 //	printf("%u\n", 4294967295u);
 //	ft_printf("%u", 4294967295u);
-	printf("|%09s|\n", "hi low\0don't print me lol\0");
+	//printf("|%09s|\n", "hi low\0don't print me lol\0");
 	ft_printf("|%09s|\n", "hi low\0don't print me lol\0");
 
 //	//"this %x number", 17
 //	printf("this %x number\n", 17);
 //	ft_printf("this %x number\n", 17);
-	return (0);
+	//return (0);
+	while (1);
 }

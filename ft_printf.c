@@ -20,7 +20,7 @@ void	ft_precision_pars(const char *format, t_flag *s_pec, va_list ap)
 		s_pec->i++;
 }
 
-void ft_type(const char *format, t_flag *s_pec)
+void	ft_type(const char *format, t_flag *s_pec)
 {
 	if (format[s_pec->i])
 	{
@@ -39,8 +39,8 @@ void	ft_parsing(const char *format, t_flag *s_pec, va_list ap)
 
 int	ft_printf(const char *format, ...)
 {
-	va_list ap;
-	t_flag 	s_pec;
+	va_list	ap;
+	t_flag	s_pec;
 
 	s_pec.i = 0;
 	s_pec.len = 0;
@@ -49,11 +49,11 @@ int	ft_printf(const char *format, ...)
 	{
 		if (*(format + s_pec.i) == '%' && *(format + s_pec.i + 1) != '\0')
 		{
-			ft_parsing(format + 1 , &s_pec, ap);
+			ft_parsing(format + 1, &s_pec, ap);
 			ft_direction(++format, &s_pec, ap);
 		}
 		else
-			{
+		{
 			write(1, &format[s_pec.i], 1);
 			s_pec.len++;
 		}

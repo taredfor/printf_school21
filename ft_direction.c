@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-void ft_zero_print(t_flag *s_pec, int wid, int c)
+void	ft_zero_print(t_flag *s_pec, int wid, int c)
 {
 	if (c)
 	{
@@ -25,10 +25,10 @@ void ft_zero_print(t_flag *s_pec, int wid, int c)
 	}
 }
 
-void ft_string_print (char *format, t_flag *s_pec)
+void	ft_string_print (char *format, t_flag *s_pec)
 {
-	int len;
-	int i;
+	int	len;
+	int	i;
 
 	len = 0;
 	i = 0;
@@ -45,7 +45,6 @@ void ft_string_print (char *format, t_flag *s_pec)
 			i++;
 			len--;
 		}
-
 	}
 }
 
@@ -65,7 +64,7 @@ void	ft_char(t_flag *s_pec, char x)
 
 void	ft_string(t_flag *s_pec, char *format)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	if (!format)
@@ -89,17 +88,18 @@ void	ft_string(t_flag *s_pec, char *format)
 
 int	ft_direction(const char *format, t_flag *s_pec, va_list ap)
 {
- 	if (format[s_pec->i] == 'c')
- 		ft_char(s_pec, va_arg(ap, int));
- 	else if (format[s_pec->i] == '%')
- 		ft_char(s_pec, '%');
- 	else if (format[s_pec->i] == 's')
- 		ft_string(s_pec, va_arg(ap,char *));
- 	else if (format[s_pec->i] == 'd' || format[s_pec->i] == 'i')
+	if (format[s_pec->i] == 'c')
+		ft_char(s_pec, va_arg(ap, int));
+	else if (format[s_pec->i] == '%')
+		ft_char(s_pec, '%');
+	else if (format[s_pec->i] == 's')
+		ft_string(s_pec, va_arg(ap, char *));
+	else if (format[s_pec->i] == 'd' || format[s_pec->i] == 'i')
 		ft_printing_decimal(s_pec, va_arg(ap, int));
-	else if (format[s_pec->i] == 'X' || format[s_pec->i] == 'x' || format[s_pec->i] == 'u')
-			ft_printing_unsigned_decimal(s_pec, va_arg(ap, unsigned int));
+	else if (format[s_pec->i] == 'X' || format[s_pec->i] == 'x' \
+	|| format[s_pec->i] == 'u')
+		ft_printing_unsigned_decimal(s_pec, va_arg(ap, unsigned int));
 	else if (format[s_pec->i] == 'p')
 		ft_printing_pointer(s_pec, va_arg(ap, unsigned long));
- 	return (0);
+	return (0);
 }

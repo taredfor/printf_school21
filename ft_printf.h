@@ -1,9 +1,9 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-#include <unistd.h>
-#include "stdarg.h"
-#include <stdlib.h>
+# include <unistd.h>
+# include "stdarg.h"
+# include <stdlib.h>
 
 typedef struct s_pec
 {
@@ -14,9 +14,9 @@ typedef struct s_pec
 	int		width;
 	int		precision;
 	char	type;
-	int 	dot;
-	int 	star;
-	int 	base;
+	int		dot;
+	int		star;
+	int		base;
 }	t_flag;
 
 int		ft_printf(const char *format, ...);
